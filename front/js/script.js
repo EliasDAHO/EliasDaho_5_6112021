@@ -1,4 +1,4 @@
- //declaration données produits
+ //annonce données produits
 const apiUrl = "http://localhost:3000/api/products/";
 var product = [];
 console.log(product);
