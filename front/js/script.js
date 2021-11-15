@@ -1,14 +1,22 @@
- for (let jsonProduct of jsonListProduct){
-    
-    let product = new Product(jsonProduct);
-    document.querySelector('#items').innerHTML += `<a href="./product.html?id=${product._id}">
-                                                    <article>
-                                                      <img id='img' src="${product.imageUrl}" alt="${product.altTxt}">
-                                                      <h3 id="nomproduit" class="productName">${product.name}</h3>
-                                                      <p class="productDescription">${product.description}</p>
-                                                    </article>
-                                                  </a> `;
-  
-  }
-
-;
+ //declaration données produits
+const apiUrl = "http://localhost:3000/api/products/";
+var product = [];
+console.log(product);
+// API  
+fetch(apiUrl)
+      .then((response) => response.json())
+      .then((product) => {
+         console.table(product)
+         displayProducts(product);
+      });
+  // affichage des produits
+ function displayProducts(products){
+   var html='';
+   products.forEach(element => {
+      html+='<a href="./product.html?_id='+element._id+'"><article><img src="'+
+      element.imageUrl+'" alt="'+element.altTxt+
+      '"><h3 class="productName">'+element.name+'</h3><p class="productDescription">'+
+      element.description+'.</p></article></a>';
+   });
+   document.getElementById("items").innerHTML= html;
+}
