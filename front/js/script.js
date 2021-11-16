@@ -4,7 +4,7 @@ var product = [];
 console.log(product);
 // API  
 fetch(apiUrl)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((product) => {
          console.table(product)
          displayProducts(product);
