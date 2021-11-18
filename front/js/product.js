@@ -19,7 +19,6 @@ function loadProduct(urlProduct) {
 
 // affichage image, titre, prix, description, couleurs
 function displayProduct(oneProduct) {
-  
   document.querySelector('.item__img').innerHTML = `<img src="${oneProduct.imageUrl}" alt="${oneProduct.altTxt}">`;
   document.getElementById("title").innerHTML = oneProduct.name;
   document.getElementById("price").innerHTML = oneProduct.price;
@@ -28,4 +27,5 @@ function displayProduct(oneProduct) {
       document.getElementById("colors").innerHTML += `<option value="${oneProduct.colors[i]}">${oneProduct.colors[i]}</option>`;
   }}
 
-
+ //ajout panier
+ 
