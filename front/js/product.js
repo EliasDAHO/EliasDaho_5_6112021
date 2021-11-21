@@ -24,15 +24,27 @@ function displayProduct(oneProduct) {
   const img = document.createElement("img")
   img.setAttribute("src", oneProduct.imageUrl)
   img.setAttribute("alt", oneProduct.altTxt)
-
   imgContainer.appendChild(img)
+  
+  const Name = document.getElementById("title")
+  Name.textContent = oneProduct.name
 
-  document.getElementById("title").innerHTML = oneProduct.name;
-  document.getElementById("price").innerHTML = oneProduct.price;
-  document.getElementById("description").innerHTML = oneProduct.description;
-  for (i = 0; i < oneProduct.colors.length; i++) {
-      document.getElementById("colors").innerHTML += `<option value="${oneProduct.colors[i]}">${oneProduct.colors[i]}</option>`;
-  }}
+  const Price = document.getElementById("price")
+  Price.textContent = oneProduct.price
 
- //ajout panier
+  const Text = document.getElementById("description")
+  Text.textContent = oneProduct.description
 
+  const colorsContainer = document.getElementById("colors") 
+
+  for(let i = 0; i < oneProduct.colors.length; i++) {
+        const couchColor = oneProduct.colors[i]
+
+        const color = document.createElement("option")
+        color.setAttribute('value', couchColor)
+        color.innerText = couchColor
+        colorsContainer.appendChild(color)      
+    }
+}
+
+//ajout panier
