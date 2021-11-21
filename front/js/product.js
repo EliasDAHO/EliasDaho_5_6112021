@@ -1,5 +1,5 @@
 //recuperation ID produit
-var idProduct = new URL(location.href).searchParams.get("_id");
+const idProduct = new URL(location.href).searchParams.get("_id");
 const urlProduct = "http://localhost:3000/api/products/" + idProduct;
 
 // chargement du contenu JSON depuis les données de l'API
@@ -14,12 +14,19 @@ function loadProduct(urlProduct) {
         })
         .catch((error) => {
           console.log( error);
+          alert("Une erreur est survenue! Veuillez contacter l'administrateur du site.");
       })
 };
 
 // affichage image, titre, prix, description, couleurs
 function displayProduct(oneProduct) {
-  document.querySelector('.item__img').innerHTML = `<img src="${oneProduct.imageUrl}" alt="${oneProduct.altTxt}">`;
+  const imgContainer = document.querySelector(".item__img")
+  const img = document.createElement("img")
+  img.setAttribute("src", oneProduct.imageUrl)
+  img.setAttribute("alt", oneProduct.altTxt)
+
+  imgContainer.appendChild(img)
+
   document.getElementById("title").innerHTML = oneProduct.name;
   document.getElementById("price").innerHTML = oneProduct.price;
   document.getElementById("description").innerHTML = oneProduct.description;
@@ -28,4 +35,4 @@ function displayProduct(oneProduct) {
   }}
 
  //ajout panier
- 
+
