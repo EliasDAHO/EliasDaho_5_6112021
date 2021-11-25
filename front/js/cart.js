@@ -72,7 +72,7 @@ localStorage.setItem('keyProduct', JSON.stringify(tableProductsCart))
 
  // --- RegEX Formulaire 
  let form = document.querySelector(".cart__order__form");
- // ----Prénom
+ // Prénom
 form.firstName.addEventListener("input", function () {
  checkFirstName(this);
 });                
@@ -87,7 +87,7 @@ const checkFirstName = function (inputFirstName) {
    return false;
  }
 };
- //-----Nom
+ //Nom
 form.lastName.addEventListener("input", function () {
  checkLastName(this);
 });
@@ -102,7 +102,7 @@ form.lastName.addEventListener("input", function () {
    return false;
  }
 };
-//-----Adresse
+//Adresse
 form.address.addEventListener("input", function () {
  checkAddress(this);
 });
@@ -117,7 +117,7 @@ const checkAddress = function (inputAdress) {
    return false;
  }
 };
-//-----Ville
+//Ville
 form.city.addEventListener("input", function () {
  checkCity(this);
 });
@@ -132,7 +132,7 @@ const checkCity = function (inputCity) {
    return false;
  }
 };
-//----email
+//email
 form.email.addEventListener("input", function () {
  checkEmail(this);
 });
