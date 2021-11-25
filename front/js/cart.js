@@ -77,13 +77,13 @@ form.firstName.addEventListener("input", function () {
  checkFirstName(this);
 });                
 const checkFirstName = function (inputFirstName) {
- let nameRegExp = new RegExp("^[a-zA-Z-\s].{2,25}$");//j'accepte azAZ-espace plusiersfois
+ let nameRegExp = new RegExp("^[a-zA-Z-\s].{2,25}$");
  let testFirstName = nameRegExp.test(inputFirstName.value);
  if (testFirstName) {
    inputFirstName.nextElementSibling.innerHTML = "";
    return true;
  } else {
-   inputFirstName.nextElementSibling.innerHTML = "Votre prénom doit comporter les lettres de 'a' à 'z' au moins 2 caractères et un maximum de 25 caractères!!!";
+   inputFirstName.nextElementSibling.innerHTML = "Votre prénom doit comporter les lettres de 'a' à 'z' minimum 2 caractères et un maximum de 25 caractères!!!";
    return false;
  }
 };
@@ -98,7 +98,7 @@ form.lastName.addEventListener("input", function () {
    inputLastName.nextElementSibling.innerHTML = "";
    return true;
  } else {
-   inputLastName.nextElementSibling.innerHTML = "Votre nom doit comporter les lettres de 'a' à 'z' au moins 2 caractères et un maximum de 25 caractères!!!";
+   inputLastName.nextElementSibling.innerHTML = "Votre nom doit comporter les lettres de 'a' à 'z' minimum 2 caractères et un maximum de 25 caractères!!!";
    return false;
  }
 };
@@ -150,5 +150,7 @@ form.email.addEventListener("input", function () {
    return false;
  }
 };
+
+
 
 

@@ -71,7 +71,7 @@ descriptionProduct: description,
 quantityProduct : quantity,
 colorsProduct: colorsOption,
 };
-console.log("product to add: "+productToAdd.colorsProduct);
+
 let tableProducts= collectCart();
 let checkProduct = false;
 //collecte info produit sans doublon
