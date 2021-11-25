@@ -70,4 +70,85 @@ localStorage.setItem('keyProduct', JSON.stringify(tableProductsCart))
 })
 
 
- 
+ // --- Form RegEX 
+ let form = document.querySelector(".cart__order__form");
+ // ----Prénom
+form.firstName.addEventListener("input", function () {
+ checkFirstName(this);
+});                
+const checkFirstName = function (inputFirstName) {
+ let nameRegExp = new RegExp("^[a-zA-Z-\s].{2,25}$");//j'accepte azAZ-espace plusiersfois
+ let testFirstName = nameRegExp.test(inputFirstName.value);
+ if (testFirstName) {
+   inputFirstName.nextElementSibling.innerHTML = "";
+   return true;
+ } else {
+   inputFirstName.nextElementSibling.innerHTML = "Votre prénom doit comporter les lettres de 'a' à 'z' au moins 2 caractères et un maximum de 25 caractères!!!";
+   return false;
+ }
+};
+ //-----Nom
+form.lastName.addEventListener("input", function () {
+ checkLastName(this);
+});
+ const checkLastName = function (inputLastName) {
+ let nameRegExp = new RegExp("^[a-zA-Z-\s].{2,25}$");
+ let testLastName = nameRegExp.test(inputLastName.value);
+ if (testLastName) {
+   inputLastName.nextElementSibling.innerHTML = "";
+   return true;
+ } else {
+   inputLastName.nextElementSibling.innerHTML = "Votre nom doit comporter les lettres de 'a' à 'z' au moins 2 caractères et un maximum de 25 caractères!!!";
+   return false;
+ }
+};
+//-----Adresse
+form.address.addEventListener("input", function () {
+ checkAddress(this);
+});
+const checkAddress = function (inputAdress) {
+ let addressRegExp = new RegExp("^[0-9]{1,4}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+$");
+ let testAdress = addressRegExp.test(inputAdress.value);
+ if (testAdress) {
+   inputAdress.nextElementSibling.innerHTML = "";
+   return true;
+ } else {
+   inputAdress.nextElementSibling.innerHTML = "Saisissez votre adresse correctement";
+   return false;
+ }
+};
+//-----Ville
+form.city.addEventListener("input", function () {
+ checkCity(this);
+});
+const checkCity = function (inputCity) {
+ let cityRegExp = new RegExp("^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$");
+ let testCity = cityRegExp.test(inputCity.value);
+ if (testCity) {
+   inputCity.nextElementSibling.innerHTML = "";
+   return true;
+ } else {
+   inputCity.nextElementSibling.innerHTML = "Saisissez votre ville";
+   return false;
+ }
+};
+//----email
+form.email.addEventListener("input", function () {
+ checkEmail(this);
+});
+ const checkEmail = function (inputEmail) {
+ let emailRegExp = new RegExp(
+   "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$");
+ let testEmail = emailRegExp.test(inputEmail.value);
+
+ if (testEmail) {
+   inputEmail.nextElementSibling.innerHTML = "";
+   return true;
+ } else {
+   inputEmail.nextElementSibling.innerHTML =
+     "Saisissez votre adresse Email correctement xxxxxxxx@xxxxx.xx";
+   return false;
+ }
+};
+
+
