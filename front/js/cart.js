@@ -1,12 +1,12 @@
 //collecte des produits du panier vers le local storage
 const tableProductsCart = JSON.parse(localStorage.getItem("keyProduct"));
 console.table(tableProductsCart)
-
 let productTotal=0;
-
 for (let elementCart of tableProductsCart){
+
 //affichage panier
-document.querySelector('#cart__items').innerHTML+= `<article class="cart__item" data-id="${elementCart.idProduct}">
+document.querySelector('#cart__items').innerHTML+= 
+`<article class="cart__item" data-id="${elementCart.idProduct}">
 <div class="cart__item__img">
   <img src="${elementCart.imageProduct}" alt="${elementCart.altTxtProduct}">
 </div>
@@ -15,7 +15,7 @@ document.querySelector('#cart__items').innerHTML+= `<article class="cart__item" 
     <h2>${elementCart.titleProduct}</h2>
     <p>${elementCart.colorsProduct} </p>
     <p>${elementCart.priceProduct} €</p>
-  </div>
+ </div>
   <div class="cart__item__content__settings">
     <div class="cart__item__content__settings__quantity">
       <p>Qté : </p>
@@ -70,7 +70,7 @@ localStorage.setItem('keyProduct', JSON.stringify(tableProductsCart))
 })
 
 
- // --- Form RegEX 
+ // --- RegEX Formulaire 
  let form = document.querySelector(".cart__order__form");
  // ----Prénom
 form.firstName.addEventListener("input", function () {
