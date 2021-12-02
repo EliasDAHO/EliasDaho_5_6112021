@@ -35,7 +35,6 @@ quantityContainer.forEach((item, index) => {
   item.addEventListener('click', () => {
     tableProductsCart[index].quantityProduct = quantityContainer[index].value
     localStorage.setItem('keyProduct', JSON.stringify(tableProductsCart))
-    alert("Vous avez bien ajouter/supprimer quantité de votre article")
     window.location.reload()
   })
    }) 
@@ -63,7 +62,7 @@ element.addEventListener('click', () => {
 let deleteProductOfCart = deleteProduct[index].closest('.cart__item')
     deleteProductOfCart.remove()
     tableProductsCart.splice(index, 1)
-    alert("Votre article est bien supprimé.")
+    alert("Votre article a bien été supprimé.")
 localStorage.setItem('keyProduct', JSON.stringify(tableProductsCart))
  window.location.reload()
  })
@@ -151,6 +150,60 @@ form.email.addEventListener("input", function () {
  }
 };
 
-
-
-
+ 
+//envoie données vers API et notification de la commande 
+  const postOrder = (Order) => {
+    fetch("http://localhost:3000/api/products/order", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/JSON",
+      },
+      body: JSON.stringify(Order),   
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        const orderId = data.orderId;
+        console.log(data.orderId);
+  //envoie la commande vers la page "confirmation.html" et  localStorage effacé
+        window.location.href = "confirmation.html" + "?" + "name" + "=" + orderId;
+        localStorage.clear();
+      });
+  };
+  //validation formulaire et commmande
+  const notifyOrder = () => {
+    document.querySelector("#order").addEventListener("click", (event) => {
+      event.preventDefault();
+      if (
+        checkFirstName(form.firstName) &&
+        checkLastName(form.lastName) &&
+        checkAddress(form.address) &&
+        checkCity(form.city) &&
+        checkEmail(form.email)
+      ) {
+        const contact = {
+          lastName: form.lastName.value,
+          firstName: form.firstName.value,
+          address: form.address.value,
+          city: form.city.value,
+          email: form.email.value,
+        };
+  
+        const storage = JSON.parse(localStorage.getItem("keyProduct"));
+  
+        const products = []
+        for (k = 0; k < storage.length; k++) {
+          let idOrder = storage[k].idProduct;
+          products.push(idOrder);
+        }
+    //envoie de la commande vers la page "confirmation"
+        let sendOrder = {contact,products};
+  
+        localStorage.setItem("sendOrder", JSON.stringify(sendOrder));
+  
+        postOrder(sendOrder);
+     
+      }
+    });
+  };
+  notifyOrder();
