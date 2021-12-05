@@ -193,11 +193,11 @@ form.email.addEventListener("input", function () {
   
         const products = []
         for (k = 0; k < storage.length; k++) {
-          let idOrder = storage[k].idProduct;
+          const idOrder = storage[k].idProduct;
           products.push(idOrder);
         }
-    //envoie de la commande vers la page "confirmation"
-        let sendOrder = {contact,products};
+//envoie de la commande vers la page "confirmation"
+        const sendOrder = {contact,products};
   
         localStorage.setItem("sendOrder", JSON.stringify(sendOrder));
   
