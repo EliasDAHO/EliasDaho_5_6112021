@@ -16,7 +16,7 @@ function loadProduct(urlProduct) {
           console.log( error);
           alert("Une erreur est survenue! Veuillez contacter l'administrateur du site.");
       })
-};
+    };
 
 // affichage image, titre, prix, description, couleurs
 function displayProduct(oneProduct) {
@@ -87,7 +87,7 @@ if (!checkProduct) {
   localStorage.setItem("keyProduct", JSON.stringify(tableProducts));
   console.table(tableProducts);
   alert("Vos articles ont bien été ajouté au panier.");}
-}) 
+});
 
 function collectCart(){
 //produit du local storage vers le tableau
