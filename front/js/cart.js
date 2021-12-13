@@ -1,6 +1,5 @@
 //collecte des produits du panier vers le local storage
 const tableProductsCart = JSON.parse(localStorage.getItem("keyProduct"));
-console.table(tableProductsCart)
 let productTotal=0;
 for (let elementCart of tableProductsCart){
 
@@ -164,7 +163,7 @@ form.email.addEventListener("input", function () {
       .then((data) => data.json())
       .then((data) => {
         const orderId = data.orderId;
-        console.log(data.orderId);
+        
   //envoie la commande vers la page "confirmation.html" et  localStorage effacé
         window.location.href = "confirmation.html" + "?" + "name" + "=" + orderId;
         localStorage.clear();

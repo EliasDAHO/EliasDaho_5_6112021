@@ -13,7 +13,7 @@ function loadProduct(urlProduct) {
             displayProduct(product);
         })
         .catch((error) => {
-          console.log( error);
+          ( error);
           alert("Une erreur est survenue! Veuillez contacter l'administrateur du site.");
       })
     };
@@ -85,7 +85,6 @@ for (let product of tableProducts) {
 if (!checkProduct) {
   tableProducts.push(productToAdd);}
   localStorage.setItem("keyProduct", JSON.stringify(tableProducts));
-  console.table(tableProducts);
   alert("Vos articles ont bien été ajouté au panier.");}
 });
 
